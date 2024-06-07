@@ -1,13 +1,16 @@
 const User = require('../models/User');
 const Jwt = require('jsonwebtoken');
 
+const JWT_KEY=e-com
+
+
 const register = async (req, resp) => {
     try {
         let user = new User(req.body);
         let result = await user.save();
         result = result.toObject();
         delete result.password;
-        Jwt.sign({result}, process.env.JWT_KEY, {expiresIn:"2h"}, (error, token) => {
+        Jwt.sign({result}, JWT_KEY, {expiresIn:"2h"}, (error, token) => {
             if (error) {
                 return resp.status(400).json({
                     success: false,

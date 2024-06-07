@@ -1,11 +1,11 @@
 const Jwt = require('jsonwebtoken');
-
+const JWT_KEY=e-com
 const verifyToken = (req, resp, next) => {
     try {
         let token = req.headers['authorization'];
         if (token) {
             token = token.split(' ')[1];
-            Jwt.verify(token, process.env.JWT_KEY, (error, valid) => {
+            Jwt.verify(token, JWT_KEY, (error, valid) => {
                 if (error) {
                     return resp.status(401).json({
                         success: false,
