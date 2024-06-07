@@ -33,3 +33,4 @@ jobs:
         echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
         echo "JWT_KEY=${{ secrets.JWT_KEY }}" >> .env
         echo "PORT=${{ secrets.PORT }}" >> .env
+        
