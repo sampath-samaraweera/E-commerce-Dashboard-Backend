@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const Jwt = require('jsonwebtoken');
 
-const JWT_KEY=e-com
+const JWT_KEY="e-com"
 
 
 const register = async (req, resp) => {
