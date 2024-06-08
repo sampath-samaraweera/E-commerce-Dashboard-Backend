@@ -1,5 +1,6 @@
 const Jwt = require('jsonwebtoken');
 const JWT_KEY="e-com"
+
 const verifyToken = (req, resp, next) => {
     try {
         let token = req.headers['authorization'];
