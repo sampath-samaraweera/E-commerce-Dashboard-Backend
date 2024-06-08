@@ -1,10 +1,11 @@
 const User = require('../models/User');
 const Jwt = require('jsonwebtoken');
 
-const JWT_KEY="e-com"
+const JWT_KEY = 'e-com'
 
 
 const register = async (req, resp) => {
+    // console.log(req)
     try {
         let user = new User(req.body);
         let result = await user.save();
@@ -39,7 +40,7 @@ const login = async (req, resp) => {
         if (req.body.email && req.body.password) {
             let user = await User.findOne(req.body).select("-password");
             if (user) {
-                Jwt.sign({user}, process.env.JWT_KEY, {expiresIn:"2h"}, (error, token) => {
+                Jwt.sign({user}, JWT_KEY, {expiresIn:"2h"}, (error, token) => {
                     if (error) {
                         return resp.status(400).json({
                             success: false,
