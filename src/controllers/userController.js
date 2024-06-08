@@ -40,6 +40,7 @@ const login = async (req, resp) => {
         if (req.body.email && req.body.password) {
             let user = await User.findOne(req.body).select("-password");
             if (user) {
+                console.log(JWT_KEY)
                 Jwt.sign({user}, JWT_KEY, {expiresIn:"2h"}, (error, token) => {
                     if (error) {
                         return resp.status(400).json({
