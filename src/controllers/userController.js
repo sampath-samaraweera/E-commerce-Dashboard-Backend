@@ -41,12 +41,12 @@ const login = async (req, resp) => {
             let user = await User.findOne(req.body).select("-password");
             if (user) {
                 console.log("user is", user)
-                Jwt.sign({user},  {expiresIn:"2h"}, (error, token) => {
+                Jwt.sign({user}, JWT_KEY, {expiresIn:"2h"}, (error, token) => {
                     if (error) {
                         return resp.status(400).json({
                             success: false,
                             message: "Something went wrong",
-                            user: user
+                            error: error.message,
                         });
                     }
                     resp.status(200).json({
