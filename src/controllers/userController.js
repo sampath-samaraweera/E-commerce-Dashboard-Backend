@@ -40,12 +40,14 @@ const login = async (req, resp) => {
         if (req.body.email && req.body.password) {
             let user = await User.findOne(req.body).select("-password");
             if (user) {
+                console.log("user is", user)
                 Jwt.sign({user}, "e-com", {expiresIn:"2h"}, (error, token) => {
                     if (error) {
                         return resp.status(400).json({
                             success: false,
                             message: "Something went wrong",
-                            error: error.message
+                            error: error.message,
+                            user: user
                         });
                     }
                     resp.status(200).json({
@@ -63,7 +65,7 @@ const login = async (req, resp) => {
         } else {
             resp.status(400).json({
                 success: false,
-                message: "Not enough user details!"
+                message: "Please fill all fields."
             });
         }
     } catch (error) {
