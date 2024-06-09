@@ -46,7 +46,6 @@ const login = async (req, resp) => {
                         return resp.status(400).json({
                             success: false,
                             message: "Something went wrong",
-                            error: error.message,
                             user: user
                         });
                     }
