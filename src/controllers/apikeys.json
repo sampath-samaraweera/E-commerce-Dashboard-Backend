@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tech-store-426109",
+  "private_key_id": "86cb9917aed4a15e92ddbe7ce6ce1a54011a666c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDnyRM9vTh3VAmp\nYwRZk9dSZNQAe4DykhDXYZlo50X/gRiNNhqA9xK6/kXY7bs+9r4+MKmFEHESNQXA\nZwwVNRZgkFlAB9vQ9aYoN1/ryO9CyjDo+8+J5upA4eeUnwHtIiUxzcdedqin23kq\nQtTvEzDf62kOdkp/EjWLaDXCpZ7iRLgWgvrQRU7xaTIvH/vMk72+SiL+HpUz5sBf\nTMA86QntsM2xVXURzeJfWnmT87wJ+QWFnw09Gac1v8sai4+38EHEblnYdPaQr3Xz\nXss+7SoAdu1LblVqDz5DRWIjJGBHAt/PKlW0FFow+tXFQHsSECUcCAYDNtBoxHl4\nKkikOIzRAgMBAAECggEAEAY+4Cx0KkzLL7SepP5De0jo/sELGsoWI7vVxjLCDD5t\ntvqL9clPGFIyvEMASGO45pYI7EAFHzH+/CyroU42pjWok/SPIgjPpFViumt9fh+6\nJqtdD27BWHu9vdDJ6m3rRiCQxWM8+QDjhTRSYhZwsTRmYpdzQkp9HO6XE+ZNIB2o\nL/1yRpZaPqDi9MeSi/1qlntttjPM0T7iR4TXYlhXEXF5zaCIzMgEfHyU48yA0DIx\nJrSrObjDTq5kh92i4xjiIZ8zw0IPMng+wzcK/7NxxOTBqLrIV4c4N1YMQo9TDu87\niCNDMfjIPSNbHv7h8GB54g1SXFD9Lyvm6go8U/MwOQKBgQD4FEwze8cHFme21ZXV\nQ1SWK1L377XzRO7idS4FygrCQrKXa3377AMJtcmLScVLchAoum0XKeg1Mg3vrJG0\nfgWd+1zS47uif/au1fBo71aoNCmvTs68JrbLDr/AOCsPnHqkYJzh1JxiwcEZwWY+\nGuQwgpetSkFBk55Yg4dGqk6QiQKBgQDvL5kcbuERhgjfJIo1tANdZbFmP4AknHU/\nrJj1x1Fguz3f/Vh9qC3kWc+RxMm9wXkY+StIqi3giLOTVWN2y9Y+enpECiBz5SJk\nynv3sYPK7UabedcrsIt2wSjqZVKQ9Pv9ru7l/81/XBgxgOzAyEfNjjDLcMCIEIiu\n53MJ4Du4CQKBgHS6cESFSFgAZdq00ySe4s0qI4cAJtgJpnGt+3LD554SbiArdwMz\nwRYvkF7W3luqlwni9nPAxz9IhyAwTfrklVYJsVqVx3MlzPflOJLXkyngKYEQjtwf\nR0Fydi1HAJP+6AIyZ38nYFJjoq2wv6AXXSmqOR5T4zKs+APkF6Hbfs4pAoGAXePz\nWIP1+akBxoZTcq1NPNZ0gsyegsCgDfS0vpYVTcFykoCiwgDIswDGSFRVVRWjcbgt\n04JqK9+9jjJQrwto+HGfmSHYh2YE0EfjzeFy+K+XreRwIIhW1rEQXKKVfK2OVZDb\n2pFFm58NKDGRvkNgXEJaySFjkoXbAb19HP1Ws/ECgYEA93LRf0zz1MxHGpypukm7\nIG672X8QmlZiANFyDMRW51gNPFM5/0l4MZWNA8FPTECYtXIoQKqO5I0DtHwns2Gm\n+nHTQXDHSYglxMf5+pf6i7fdbFWIbI5GnMs7Q8QeN/gzSYTn71n0xz5L2/GL+5IN\n3iz5dP2b0IZ6S3ide9BXFqk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tech-store@tech-store-426109.iam.gserviceaccount.com",
+  "client_id": "112203585574232114962",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tech-store%40tech-store-426109.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
