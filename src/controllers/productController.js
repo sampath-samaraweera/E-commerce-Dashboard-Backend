@@ -1,8 +1,18 @@
 const Product = require('../models/Product');
+const { authorize, uploadFile } = require('./uploadFileController');
 
 const addProduct = async (req, resp) => {
     try {
-        let product = new Product(req.body);
+        const authClient = await authorize();
+        let fileUrl = '';
+        if (req.file) {
+            const fileName = req.file.originalname;
+            const filePath = req.file.path;
+            fileUrl = await uploadFile(authClient, filePath, fileName);
+        }
+
+        let productData = { ...req.body, imageUrl: fileUrl };
+        let product = new Product(productData);
         let result = await product.save();
         resp.status(201).json({
             success: true,
