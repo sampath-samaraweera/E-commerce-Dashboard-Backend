@@ -1,14 +1,13 @@
 const Product = require('../models/Product');
-const { authorize, uploadFile } = require('./uploadFileController');
+const cloudinary = require('../utils/cloudinaryConfig');
 
 const addProduct = async (req, resp) => {
     try {
-        const authClient = await authorize();
         let fileUrl = '';
         if (req.file) {
-            const fileName = req.file.originalname;
-            const filePath = req.file.path;
-            fileUrl = await uploadFile(authClient, filePath, fileName);
+            // Upload file to Cloudinary
+            const result = await cloudinary.uploader.upload(req.file.path);
+            fileUrl = result.secure_url;
         }
 
         let productData = { ...req.body, imageUrl: fileUrl };
