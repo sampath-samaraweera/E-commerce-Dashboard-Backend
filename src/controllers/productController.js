@@ -10,7 +10,7 @@ const addProduct = async (req, resp) => {
             fileUrl = result.secure_url;
         }
 
-        let productData = { ...req.body, imageUrl: fileUrl };
+        let productData = { ...req.body, imageUrl: fileUrl }; 
         let product = new Product(productData);
         let result = await product.save();
         resp.status(201).json({
@@ -46,22 +46,35 @@ const getAllProducts = async (req, resp) => {
 
 const deleteProduct = async (req, resp) => {
     try {
-        let result = await Product.deleteOne({_id:req.params.id});
+        // Find the product to get the image URL
+        const product = await Product.findById(req.params.productId);
+        if (!product) {
+            return resp.status(404).json({
+                success: false,
+                message: "Product not found"
+            });
+        }
+        if (product.imageUrl) {
+            const imageUrl = product.imageUrl;
+            const publicId = imageUrl.split('/').pop().split('.')[0];
+
+            await cloudinary.uploader.destroy(publicId);            
+        }
+
+        let result = await Product.deleteOne({ _id: req.params.productId });
         if (result.deletedCount > 0) {
             resp.status(201).json({
                 success: true,
                 data: result
-            })            
-        }
-        else{
+            });
+        } else {
             resp.status(400).json({
                 success: false,
                 data: result
-            })
+            });
         }
 
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error while deleting product:", error);
         resp.status(500).json({
             success: false,
@@ -69,21 +82,40 @@ const deleteProduct = async (req, resp) => {
             error: error.message
         });
     }
-
 };
 
 const updateProduct = async (req, resp) => {
-    try{
+    try {
+        let existingProduct = await Product.findById(req.params.productId);
+        if (!existingProduct) {
+            return resp.status(404).json({
+                success: false,
+                message: 'Product not found'
+            });
+        }
+        let fileUrl = '';
+
+        if (req.file) {
+            console.log("Update Product img", req.body.image)
+            const existingImageId = existingProduct.imageUrl.split('/').pop().split('.')[0];
+
+            await cloudinary.uploader.destroy(existingImageId);
+
+            const result = await cloudinary.uploader.upload(req.file.path);
+
+            req.body.imageUrl = result.secure_url;
+        }
+
         let product = await Product.updateOne(
-            {_id: req.params.id},
-            { $set: req.body}
-        )
+            { _id: req.params.productId },
+            { $set: req.body }
+        );
+
         resp.status(200).json({
             success: true,
             data: product
-        })
-    }
-    catch(error){
+        });
+    } catch (error) {
         console.error("Error while updating product:", error);
         resp.status(500).json({
             success: false,
@@ -91,12 +123,11 @@ const updateProduct = async (req, resp) => {
             error: error.message
         });
     }
-
 };
 
 const getProduct= async (req, resp) => {
     try{
-        let product = await Product.findOne({_id:req.params.id});
+        let product = await Product.findOne({_id:req.params.productId});
         if (product){
             resp.status(200).json({
                 success: true,
@@ -151,6 +182,32 @@ const searchProduct = async (req, resp) => {
     }
 
 };
+const getMyProducts = async (req, resp) => {
+    try{
+        let result = await Product.find({userId:req.params.userId})
+        if(result){
+            resp.status(200).json({
+                success: true,
+                data: result
+            })
+        }
+        else{
+            resp.status(404).json({
+                success: false,
+                data: result
+            })
+        }
+    }
+    catch(error){
+        console.error("Error while fetching data from api:", error);
+        resp.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: error.message
+        });
+    }
+
+};
 
 module.exports = { 
     addProduct, 
@@ -159,4 +216,5 @@ module.exports = {
     deleteProduct,
     updateProduct,
     searchProduct,
+    getMyProducts
 };
