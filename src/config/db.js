@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-
-const MONGO_URI="mongodb+srv://admin:admin@cluster0.g0sp0f8.mongodb.net/e-commerce"
-
+require('dotenv').config();
+const MONGO_URI = process.env.MONGO_URI
 const connectDB = async () => {
     console.log(MONGO_URI);
     try {

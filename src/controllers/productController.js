@@ -96,7 +96,7 @@ const updateProduct = async (req, resp) => {
         let fileUrl = '';
 
         if (req.file) {
-            console.log("Update Product img", req.body.image)
+            console.log("Update Product img", req.body)
             const existingImageId = existingProduct.imageUrl.split('/').pop().split('.')[0];
 
             await cloudinary.uploader.destroy(existingImageId);
