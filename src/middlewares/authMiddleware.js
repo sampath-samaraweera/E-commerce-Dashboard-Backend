@@ -1,5 +1,6 @@
 const Jwt = require('jsonwebtoken');
-const JWT_KEY="e-com"
+require('dotenv').config();
+const JWT_KEY= process.env.JWT_KEY
 
 const verifyToken = (req, resp, next) => {
     try {

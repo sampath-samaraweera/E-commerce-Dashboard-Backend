@@ -1,5 +1,8 @@
 const Jwt = require('jsonwebtoken');
-const JWT_KEY="e-com"
+require('dotenv').config();
+
+const JWT_KEY= process.env.JWT_KEY
+
 const generateToken = (payload) => {
     return Jwt.sign(payload, JWT_KEY, { expiresIn: '2h' });
 };
