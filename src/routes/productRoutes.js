@@ -11,11 +11,11 @@ const upload = multer({ dest: 'uploads/' }); // This saves files to the 'uploads
 const router = express.Router();
 
 router.post('/add-product', verifyToken, upload.single('image'), addProduct);
-router.get('/getAll', verifyToken, getAllProducts);
+router.get('/getAll', getAllProducts);
 router.delete('/product/:productId', verifyToken, deleteProduct);
 router.put('/product/:productId', verifyToken, upload.single('image'), updateProduct);
-router.get('/product/:productId', verifyToken, getProduct);
-router.get('/search/:key', verifyToken, searchProduct);
+router.get('/product/:productId', getProduct);
+router.get('/search/:key', searchProduct);
 router.get('/myProduct/:userId', verifyToken, getMyProducts);
 
 module.exports = router;

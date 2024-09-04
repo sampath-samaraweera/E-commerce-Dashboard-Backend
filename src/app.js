@@ -40,7 +40,7 @@ app.get('/auth/google/callback',
         // Successful authentication, generate JWT token
         const token = Jwt.sign({ id: req.user._id }, JWT_KEY, { expiresIn: '1h' });
         console.log(token);
-        res.redirect(`http://localhost:3000?token=${token}`);
+        res.redirect(`http://localhost:3000/login?token=${token}`);
       } catch (error) {
         console.error('Error generating token:', error);
         res.redirect('/?error=token_generation_failed');
