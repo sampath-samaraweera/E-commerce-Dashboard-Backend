@@ -60,7 +60,6 @@ const deleteProduct = async (req, resp) => {
 
             await cloudinary.uploader.destroy(publicId);            
         }
-
         let result = await Product.deleteOne({ _id: req.params.productId });
         if (result.deletedCount > 0) {
             resp.status(201).json({
@@ -73,7 +72,6 @@ const deleteProduct = async (req, resp) => {
                 data: result
             });
         }
-
     } catch (error) {
         console.error("Error while deleting product:", error);
         resp.status(500).json({
