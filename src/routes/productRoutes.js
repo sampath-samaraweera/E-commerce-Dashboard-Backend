@@ -3,7 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const verifyToken = require('../middlewares/authMiddleware');
 const { addProduct, getAllProducts, getProduct, deleteProduct,
-    updateProduct,searchProduct, getMyProducts  } = require('../controllers/productController');
+    updateProduct,searchProduct, getMyProducts, checkoutProduct  } = require('../controllers/productController');
 
 const upload = multer({ dest: 'uploads/' }); // This saves files to the 'uploads' folder
 
@@ -16,5 +16,6 @@ router.put('/product/:productId', verifyToken, upload.single('image'), updatePro
 router.get('/product/:productId', getProduct);
 router.get('/search/:key', searchProduct);
 router.get('/myProduct/:userId', verifyToken, getMyProducts);
+router.post('/checkout', checkoutProduct)
 
 module.exports = router;
