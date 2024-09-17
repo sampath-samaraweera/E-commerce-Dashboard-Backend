@@ -7,7 +7,6 @@ const { addProduct, getAllProducts, getProduct, deleteProduct,
 
 const upload = multer({ dest: 'uploads/' }); // This saves files to the 'uploads' folder
 
-
 const router = express.Router();
 
 router.post('/add-product', verifyToken, upload.single('image'), addProduct);
