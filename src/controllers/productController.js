@@ -1,5 +1,6 @@
 const Product = require('../models/Product');
 const cloudinary = require('../utils/cloudinaryConfig');
+const stripe = require("stripe")(process.env.STRIPE_SECRET)
 
 const addProduct = async (req, resp) => {
     try {
@@ -207,6 +208,45 @@ const getMyProducts = async (req, resp) => {
 
 };
 
+const checkoutProduct = async (req, resp) => {
+    const products = req.body;
+    console.log(products);
+    try {
+        const lineItems = products.map((product) => ({
+            price_data:{
+                currency: 'LKR',
+                product_data:{
+                    name: product.name,
+                    // company: product.company,
+                    image: product.image
+                },
+                unit_amount: Math.round(product.price*100),
+            },
+            quantity: product.quantity
+        }))
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: lineItems,
+            mode: "payment",
+            success_url: 'http://localhost:3000/success',
+            cancel_url: 'http://localhost:3000/cancel',
+        })
+        resp.json({id: session.id})
+        resp.status(201).json({
+            success: true,
+            data: result
+        });
+    } catch (error) {
+        console.error("Error while adding product:", error);
+        resp.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: error.message
+        });
+    }
+};
+
 module.exports = { 
     addProduct, 
     getAllProducts, 
@@ -214,5 +254,6 @@ module.exports = {
     deleteProduct,
     updateProduct,
     searchProduct,
-    getMyProducts
+    getMyProducts,
+    checkoutProduct,
 };
