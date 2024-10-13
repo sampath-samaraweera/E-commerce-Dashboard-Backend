@@ -6,7 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const Jwt = require('jsonwebtoken')
 const passport = require('./middlewares/googleAuth'); // Add passport middleware
-const session = require('express-session'); // For session management
+const session = require('express-session');
 
 const app = express();
 const JWT_KEY = process.env.JWT_KEY
