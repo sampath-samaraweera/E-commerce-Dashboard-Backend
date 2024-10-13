@@ -1,4 +1,5 @@
 // src/middlewares/googleAuth.js
+require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/User'); // Adjust the path to your User model
