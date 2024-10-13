@@ -37,4 +37,3 @@ jobs:
         echo "${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
         echo "${{ secrets.STRIPE_SECRET }}" >> .env
     - run: cat .env
-    - run: pm2 start index
