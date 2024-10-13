@@ -32,7 +32,7 @@ jobs:
         touch .env
         echo "${{ secrets.MONGO_URI }}" >> .env
         echo "${{ secrets.JWT_KEY }}" >> .env
-        echo ${{ secrets.PORT }}" >> .env
+        echo "${{ secrets.PORT }}" >> .env
         echo "${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
         echo "${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
         echo "${{ secrets.STRIPE_SECRET }}" >> .env
